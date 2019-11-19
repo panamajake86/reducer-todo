@@ -1,7 +1,7 @@
 export const initialState = {
     title: 'Todo List:',
     todos: [
-        { item: 'learn about reducers', completed: false, id: 1 }
+        { item: 'Learn about Reducers', completed: false, id: 1 }
     ]
 }
 
@@ -10,19 +10,19 @@ export const todoReducer = (state, action) => {
         case "SET_TODO":
             return {
                 ...state,
-                todos: [...state.todos, action.payload]
+                todos: [...state, id: date.now(), action.payload]
             };
         case "TOGGLE_TODO":
             return {
                 ...state,
-                todos: state.todos.map((todo, idx) => {
-                    if (idx == action.payload) {
-                        return { ...todo, completed: !todo.compleded };
-                    }
-                    return todo;
-                })
-            };
+                todos: [...state, todos.completed: !state.todos.completed]
+                };
+        case "DELETE_COMPLETED":
+            return {
+                ...state,
+                todos: 
+            }
         default:
             return state;
-    }
+};
 };

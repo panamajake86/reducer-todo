@@ -7,7 +7,7 @@ const TodoList = () => {
     const [newTodo, setNewTodo] = useState();
 
     const handleChanges = e => {
-        setNewTitleText(e.target.value);
+        setNewTodo(e.target.value);
     };
 
         return (
@@ -15,10 +15,13 @@ const TodoList = () => {
                 <h1>{state.title}</h1>
                 <div className="todo-list">
                     {state.todos.map((todo, index) => (
-                        <h4 key={index} onClick={e => state.toggleCompleted(index)}>
+                        <h4 key={index} onClick={()=>{
+                            dispatch({type: "TOGGLE_TODO"})
+                        }}>
                             {todo.item}
                             {todo.completed && <i className="fas fa-todo" />}
                         </h4>
+                        // <p>"Schtuff"</p>
                     ))}
                 </div>
                 <input
@@ -27,7 +30,10 @@ const TodoList = () => {
                     onChange={handleChanges}
                     placeholder="Add new todo item"
                 />
-                <button onClick={handleAddTodo}>Add member</button>
+                <button onClick={()=>{
+                    dispatch({ type: "SET_TODO", payload: newTodo });
+                    setNewTodo("");
+                }}>Add New Todo</button>
             </>
         );
 };
